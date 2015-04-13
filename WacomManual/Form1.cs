@@ -17,7 +17,7 @@ namespace WaCommunicator
     {
         #region Initialising of fields, a few for options, others for quick use
         //Fields
-        private string serviceName = "Wacom Professional Service_";
+        private string serviceName = "Wacom Professional Service";
         private int timeoutMilliseconds;
         private int loops;
         private ServiceController service;
@@ -307,7 +307,7 @@ namespace WaCommunicator
             //If the restart on plug in option is checked, check if right USB device is connected, then restart
             if (restartOnPlugIn)
             {
-                if (IsUsbDeviceConnected("0084"/*, "056A") ||IsUsbDeviceConnected("0084", "0302"*/))
+                if (IsUsbDeviceConnected("056A"/*, "0080") ||IsUsbDeviceConnected("0084", "0302"*/))
                 {
                     //Notify the user of said restart
                     NotifyIcon.ShowBalloonTip(3000, "USB Device recognised", "Please wait!", ToolTipIcon.Info);
