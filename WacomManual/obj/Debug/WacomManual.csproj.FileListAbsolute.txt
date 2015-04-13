@@ -1,0 +1,12 @@
+C:\Users\Biepbot\Documents\Visual Studio 2013\Projects\WacomManual\WacomManual\obj\Debug\WacomManual.csproj.GenerateResource.Cache
+C:\Users\Biepbot\Documents\Visual Studio 2013\Projects\WacomManual\WacomManual\bin\Debug\WaCommunicator.exe.config
+C:\Users\Biepbot\Documents\Visual Studio 2013\Projects\WacomManual\WacomManual\bin\Debug\WaCommunicator.exe
+C:\Users\Biepbot\Documents\Visual Studio 2013\Projects\WacomManual\WacomManual\bin\Debug\WaCommunicator.pdb
+C:\Users\Biepbot\Documents\Visual Studio 2013\Projects\WacomManual\WacomManual\obj\Debug\WaCommunicator.Properties.Resources.resources
+C:\Users\Biepbot\Documents\Visual Studio 2013\Projects\WacomManual\WacomManual\obj\Debug\WaCommunicator.exe
+C:\Users\Biepbot\Documents\Visual Studio 2013\Projects\WacomManual\WacomManual\obj\Debug\WaCommunicator.pdb
+C:\Users\Biepbot\Documents\Visual Studio 2013\Projects\WacomManual\WacomManual\obj\Debug\WaCommunicator.Form1.resources
+C:\Users\Biepbot\Documents\Visual Studio 2013\Projects\WacomManual\WacomManual\obj\Debug\WacomManual.csprojResolveAssemblyReference.cache
+C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\bin\Debug\WaCommunicator.exe.config
+C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.exe
+C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.pdb
