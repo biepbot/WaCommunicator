@@ -25,6 +25,7 @@ namespace WaCommunicator
         private bool startMinimised;
         private bool TEMPstartMinimised;
         private bool restartOnPlugIn = true;
+        private bool pluggedIn;
         #endregion
 
         #region Constructor and loading of options
@@ -56,6 +57,7 @@ namespace WaCommunicator
             rTB_output.Text = DateTime.Now.TimeOfDay.ToString("hh\\:mm\\:ss") + " - User detected, settings loaded";
             timeoutMilliseconds = Convert.ToInt32(nUD_timeout.Value);
             loops = 0;
+            pluggedIn = IsUsbDeviceConnected("056A");
 
             //Set checks
             backgroundWorker.RunWorkerAsync();
@@ -156,6 +158,7 @@ namespace WaCommunicator
                         {
                             //Show said service, and ask for validation
                             Newline("Is the '" + serviceName + "' service installed (correctly)?");
+                            loops = 0;
 
                             NotifyIcon.ShowBalloonTip(3000, "Service not found!", "Is the service present?", ToolTipIcon.Error);
                         }
@@ -270,6 +273,7 @@ namespace WaCommunicator
             if (sender.ToString() == "Restart service upon USB plug in")
             {
                 EditAndSaveOptions(restartOnPlugIn, restartServiceUponUSBPlugInToolStripMenuItem);
+                pluggedIn = IsUsbDeviceConnected("056A");
                 return;
             }
         }
@@ -302,31 +306,55 @@ namespace WaCommunicator
 
         #region Detect USB plug in
 
-        private void DeviceEvent(object sender, EventArrivedEventArgs e)
+        #region USB handlers
+        private void DeviceInsertEvent(object sender, EventArrivedEventArgs e)
         {
             //If the restart on plug in option is checked, check if right USB device is connected, then restart
             if (restartOnPlugIn)
             {
-                if (IsUsbDeviceConnected("056A"/*, "0080") ||IsUsbDeviceConnected("0084", "0302"*/))
+                if (IsUsbDeviceConnected("056A") && !pluggedIn)
                 {
                     //Notify the user of said restart
                     NotifyIcon.ShowBalloonTip(3000, "USB Device recognised", "Please wait!", ToolTipIcon.Info);
+                    pluggedIn = true;
                     service = new ServiceController(serviceName);
                     Restart(2500, 1000);
                 }
             }
         }
 
+        private void DeviceRemoveEvent(object sender, EventArrivedEventArgs e)
+        {
+            //If a device is removed, check whether the Wacom USB is still plugged in
+            if (restartOnPlugIn)
+            {
+                pluggedIn = IsUsbDeviceConnected("056A");
+            }
+        }
+        #endregion
+
+        #region USB detector
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            //INSERTION
             //Set up the query upon activation
             WqlEventQuery insertQuery = new WqlEventQuery("SELECT * FROM __InstanceCreationEvent WITHIN 2 WHERE TargetInstance ISA 'Win32_PointingDevice'");
 
             //Create a watcher to trigger
             ManagementEventWatcher insertWatcher = new ManagementEventWatcher(insertQuery);
-            insertWatcher.EventArrived += new EventArrivedEventHandler(DeviceEvent);
+            insertWatcher.EventArrived += new EventArrivedEventHandler(DeviceInsertEvent);
             //Start the watcher
             insertWatcher.Start();
+
+            //REMOVAL
+            //Set up the query upon activation
+            WqlEventQuery removeQuery = new WqlEventQuery("SELECT * FROM __InstanceDeletionEvent WITHIN 2 WHERE TargetInstance ISA 'Win32_PointingDevice'");
+
+            //Create a watcher to trigger
+            ManagementEventWatcher removeWatcher = new ManagementEventWatcher(removeQuery);
+            removeWatcher.EventArrived += new EventArrivedEventHandler(DeviceRemoveEvent);
+            //Start the watcher
+            removeWatcher.Start();
 
             //Do something while waiting for events
             System.Threading.Thread.Sleep(200000000);
@@ -353,6 +381,8 @@ namespace WaCommunicator
             }
             return false;
         }
+        #endregion
+
         #endregion
     }
 }
