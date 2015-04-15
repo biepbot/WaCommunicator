@@ -21,6 +21,8 @@ namespace WaCommunicator
         private int timeoutMilliseconds;
         private int loops;
         private ServiceController service;
+
+        //Option fields and their temporaries / fixes
         private bool clickToRestart;
         private bool startMinimised;
         private bool TEMPstartMinimised;
@@ -34,7 +36,7 @@ namespace WaCommunicator
         { 
             InitializeComponent();
 
-            //Open option file and read it
+            //Open option file and read it; load the options
             try
             {
                 using (FileStream stream = new FileStream("WaCommunicatorOptions", FileMode.Open))
@@ -59,16 +61,16 @@ namespace WaCommunicator
             loops = 0;
             pluggedIn = IsUsbDeviceConnected("056A");
 
-            //Set checks
+            //Set the option checks
             backgroundWorker.RunWorkerAsync();
             defaultRestartUponTrayClickToolStripMenuItem.Checked = clickToRestart;
             restartServiceUponUSBPlugInToolStripMenuItem.Checked = restartOnPlugIn;
-            startApplicationMinimisedToolStripMenuItem.Checked = startMinimised;
-            TEMPstartMinimised = startMinimised;
+            startApplicationMinimisedToolStripMenuItem.Checked = TEMPstartMinimised = startMinimised;
         }
         #endregion
 
         #region Form visibility methods
+
         //Don't show form if startMinimised is true
         protected override void SetVisibleCore(bool value)
         {
@@ -111,6 +113,7 @@ namespace WaCommunicator
                 //Try restarting
                 try
                 {
+                    //If the USB is plugged in; give it some time to 'load'
                     System.Threading.Thread.Sleep(wait);
 
                     //Start by stopping the service and both set and count timeouts
