@@ -190,7 +190,7 @@ namespace WaCommunicator
         {
             //Write information lines with time
             text = DateTime.Now.TimeOfDay.ToString("hh\\:mm\\:ss") + " - " + text;
-            rTB_output.Text += Environment.NewLine + text; 
+            rTB_output.Text = rTB_output.Text.Insert(0, text + Environment.NewLine);
         }
         #endregion
 
