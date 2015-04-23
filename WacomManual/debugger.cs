@@ -96,7 +96,6 @@ namespace WaCommunicator
         private void btn_restart_service_Click(object sender, EventArgs e)
         {
             //On press, restart
-            service = new ServiceController(serviceName);
             loops = 0;
             Restart(Convert.ToInt32(nUD_timeout.Value));
         }
@@ -105,6 +104,9 @@ namespace WaCommunicator
         #region Inner functional methods; restarting and debugging
         public void Restart(int timeoutms, int wait = 0)
         {
+            //Create new servicecontroller
+            if (loops == 0) { service = new ServiceController(serviceName); }
+
             //Check the amount of loops of the catch
             if (loops <= 4)
             {
@@ -256,7 +258,7 @@ namespace WaCommunicator
             NotifyIcon.ShowBalloonTip(3000, "Restarting the driver", "Please wait!", ToolTipIcon.Info);
 
             //Initialise restart
-            service = new ServiceController(serviceName);
+            loops = 0;
             Restart(ms);
         }
         #endregion
@@ -326,7 +328,6 @@ namespace WaCommunicator
                     //Set everything correctly before restart
                     loops = 0;
                     pluggedIn = true;
-                    service = new ServiceController(serviceName);
                     Restart(2500, 1000);
                 }
             }
