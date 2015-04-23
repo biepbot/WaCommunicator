@@ -47,17 +47,20 @@
             this.closeApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.lbl_timeout = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_restart_service
             // 
             this.btn_restart_service.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_restart_service.Location = new System.Drawing.Point(12, 12);
+            this.btn_restart_service.Location = new System.Drawing.Point(12, 28);
             this.btn_restart_service.Name = "btn_restart_service";
-            this.btn_restart_service.Size = new System.Drawing.Size(164, 23);
+            this.btn_restart_service.Size = new System.Drawing.Size(122, 20);
             this.btn_restart_service.TabIndex = 1;
             this.btn_restart_service.Text = "Restart";
             this.btn_restart_service.UseVisualStyleBackColor = true;
@@ -70,10 +73,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rTB_output.BackColor = System.Drawing.SystemColors.MenuText;
             this.rTB_output.ForeColor = System.Drawing.Color.Lime;
-            this.rTB_output.Location = new System.Drawing.Point(12, 42);
+            this.rTB_output.Location = new System.Drawing.Point(12, 49);
             this.rTB_output.Name = "rTB_output";
             this.rTB_output.ReadOnly = true;
-            this.rTB_output.Size = new System.Drawing.Size(468, 215);
+            this.rTB_output.Size = new System.Drawing.Size(468, 208);
             this.rTB_output.TabIndex = 2;
             this.rTB_output.Text = "";
             // 
@@ -85,7 +88,7 @@
             0,
             0,
             0});
-            this.nUD_timeout.Location = new System.Drawing.Point(384, 13);
+            this.nUD_timeout.Location = new System.Drawing.Point(415, 28);
             this.nUD_timeout.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -97,7 +100,7 @@
             0,
             0});
             this.nUD_timeout.Name = "nUD_timeout";
-            this.nUD_timeout.Size = new System.Drawing.Size(96, 20);
+            this.nUD_timeout.Size = new System.Drawing.Size(65, 20);
             this.nUD_timeout.TabIndex = 3;
             this.nUD_timeout.Value = new decimal(new int[] {
             2500,
@@ -124,6 +127,7 @@
             this.closeApplicationToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.Size = new System.Drawing.Size(136, 92);
+            this.contextMenuStrip.Text = "Options";
             // 
             // restoreToolStripMenuItem
             // 
@@ -209,21 +213,44 @@
             // 
             this.lbl_timeout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_timeout.AutoSize = true;
-            this.lbl_timeout.Location = new System.Drawing.Point(182, 17);
+            this.lbl_timeout.Location = new System.Drawing.Point(213, 33);
             this.lbl_timeout.Name = "lbl_timeout";
             this.lbl_timeout.Size = new System.Drawing.Size(196, 13);
             this.lbl_timeout.TabIndex = 4;
             this.lbl_timeout.Text = "Timeout (in milliseconds, 2500 is default)";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStrip1.Size = new System.Drawing.Size(492, 25);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.AutoToolTip = false;
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDown = this.contextMenuStrip;
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(94, 22);
+            this.toolStripDropDownButton1.Text = "Quick options";
             // 
             // Debugger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 269);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.lbl_timeout);
             this.Controls.Add(this.nUD_timeout);
-            this.Controls.Add(this.rTB_output);
             this.Controls.Add(this.btn_restart_service);
+            this.Controls.Add(this.rTB_output);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(270, 200);
             this.Name = "Debugger";
@@ -231,6 +258,8 @@
             this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +284,8 @@
         private System.Windows.Forms.ToolStripMenuItem restartServiceUponUSBPlugInToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Label lbl_timeout;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
 
     }
 }

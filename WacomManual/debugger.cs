@@ -264,18 +264,17 @@ namespace WaCommunicator
         #region Saving and changing options
         private void IdentifySaver(object sender, EventArgs e)
         {
-            string test = sender.ToString();
-            if (sender.ToString() == "Default restart upon tray click")
+            if (sender.ToString() == defaultRestartUponTrayClickToolStripMenuItem.Text)
             {
                 EditAndSaveOptions(clickToRestart, defaultRestartUponTrayClickToolStripMenuItem);
                 return;
             }
-            if (sender.ToString() == "Start application minimised")
+            if (sender.ToString() == startApplicationMinimisedToolStripMenuItem.Text)
             {
                 EditAndSaveOptions(startMinimised, startApplicationMinimisedToolStripMenuItem);
                 return;
             }
-            if (sender.ToString() == "Restart service upon USB plug in")
+            if (sender.ToString() == restartServiceUponUSBPlugInToolStripMenuItem.Text)
             {
                 EditAndSaveOptions(restartOnPlugIn, restartServiceUponUSBPlugInToolStripMenuItem);
                 pluggedIn = IsUsbDeviceConnected("056A");
@@ -294,8 +293,10 @@ namespace WaCommunicator
             {
                 tSMI.Checked = true;
             }
-            //fix inner status
-            option = tSMI.Checked;
+            //Update inner status
+            restartOnPlugIn = restartServiceUponUSBPlugInToolStripMenuItem.Checked;
+            startMinimised = startApplicationMinimisedToolStripMenuItem.Checked;
+            clickToRestart = defaultRestartUponTrayClickToolStripMenuItem.Checked;
             //write to file
             using (FileStream stream = new FileStream("WaCommunicatorOptions", FileMode.Create))
             {
@@ -303,6 +304,7 @@ namespace WaCommunicator
                 {
                     writer.Write(defaultRestartUponTrayClickToolStripMenuItem.Checked);
                     writer.Write(startApplicationMinimisedToolStripMenuItem.Checked);
+                    writer.Write(restartServiceUponUSBPlugInToolStripMenuItem.Checked);
                     writer.Close();
                 }
             }
