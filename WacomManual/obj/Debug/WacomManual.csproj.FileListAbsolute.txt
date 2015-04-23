@@ -13,6 +13,6 @@ C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WaCommunicato
 C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\bin\Debug\WaCommunicator.exe
 C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\bin\Debug\WaCommunicator.pdb
 C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WacomManual.csprojResolveAssemblyReference.cache
-C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.Form1.resources
 C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.Properties.Resources.resources
 C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WacomManual.csproj.GenerateResource.Cache
+C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.debugger.resources

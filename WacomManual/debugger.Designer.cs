@@ -1,6 +1,6 @@
 ﻿namespace WaCommunicator
 {
-    partial class Form1
+    partial class Debugger
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Debugger));
             this.btn_restart_service = new System.Windows.Forms.Button();
             this.rTB_output = new System.Windows.Forms.RichTextBox();
             this.nUD_timeout = new System.Windows.Forms.NumericUpDown();
@@ -37,8 +37,8 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetDriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.defaultTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimumTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defaultTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defaultRestartUponTrayClickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,19 +142,19 @@
             this.resetDriverToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.resetDriverToolStripMenuItem.Text = "Reset driver";
             // 
-            // defaultTimeoutToolStripMenuItem
-            // 
-            this.defaultTimeoutToolStripMenuItem.Name = "defaultTimeoutToolStripMenuItem";
-            this.defaultTimeoutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.defaultTimeoutToolStripMenuItem.Text = "2500ms timeout";
-            this.defaultTimeoutToolStripMenuItem.Click += new System.EventHandler(this.RestartTray);
-            // 
             // minimumTimeoutToolStripMenuItem
             // 
             this.minimumTimeoutToolStripMenuItem.Name = "minimumTimeoutToolStripMenuItem";
             this.minimumTimeoutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.minimumTimeoutToolStripMenuItem.Text = "1500ms timeout";
             this.minimumTimeoutToolStripMenuItem.Click += new System.EventHandler(this.RestartTray);
+            // 
+            // defaultTimeoutToolStripMenuItem
+            // 
+            this.defaultTimeoutToolStripMenuItem.Name = "defaultTimeoutToolStripMenuItem";
+            this.defaultTimeoutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.defaultTimeoutToolStripMenuItem.Text = "2500ms timeout";
+            this.defaultTimeoutToolStripMenuItem.Click += new System.EventHandler(this.RestartTray);
             // 
             // sTimeoutToolStripMenuItem
             // 
@@ -215,7 +215,7 @@
             this.lbl_timeout.TabIndex = 4;
             this.lbl_timeout.Text = "Timeout (in milliseconds, 2500 is default)";
             // 
-            // Form1
+            // Debugger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -226,7 +226,7 @@
             this.Controls.Add(this.btn_restart_service);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(270, 200);
-            this.Name = "Form1";
+            this.Name = "Debugger";
             this.Text = "WaCommunicator";
             this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).EndInit();

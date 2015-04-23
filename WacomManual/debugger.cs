@@ -10,10 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Management;
+using System.Diagnostics;
 
 namespace WaCommunicator
 {
-    public partial class Form1 : Form
+    public partial class Debugger : Form
     {
         #region Initialising of fields, a few for options, others for quick use
         //Fields
@@ -32,7 +33,7 @@ namespace WaCommunicator
 
         #region Constructor and loading of options
         //Constructor (empty)
-        public Form1()
+        public Debugger()
         { 
             InitializeComponent();
 
