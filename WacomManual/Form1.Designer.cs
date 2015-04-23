@@ -122,44 +122,44 @@
             this.optionsToolStripMenuItem,
             this.closeApplicationToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(166, 92);
+            this.contextMenuStrip.Size = new System.Drawing.Size(136, 92);
             // 
             // restoreToolStripMenuItem
             // 
             this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.restoreToolStripMenuItem.Text = "Restore screen";
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.restoreToolStripMenuItem.Text = "See log";
             this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
             // 
             // resetDriverToolStripMenuItem
             // 
             this.resetDriverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.defaultTimeoutToolStripMenuItem,
             this.minimumTimeoutToolStripMenuItem,
+            this.defaultTimeoutToolStripMenuItem,
             this.sTimeoutToolStripMenuItem});
             this.resetDriverToolStripMenuItem.Name = "resetDriverToolStripMenuItem";
-            this.resetDriverToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.resetDriverToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.resetDriverToolStripMenuItem.Text = "Reset driver";
             // 
             // defaultTimeoutToolStripMenuItem
             // 
             this.defaultTimeoutToolStripMenuItem.Name = "defaultTimeoutToolStripMenuItem";
-            this.defaultTimeoutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.defaultTimeoutToolStripMenuItem.Text = "Default timeout";
+            this.defaultTimeoutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.defaultTimeoutToolStripMenuItem.Text = "2500ms timeout";
             this.defaultTimeoutToolStripMenuItem.Click += new System.EventHandler(this.RestartTray);
             // 
             // minimumTimeoutToolStripMenuItem
             // 
             this.minimumTimeoutToolStripMenuItem.Name = "minimumTimeoutToolStripMenuItem";
-            this.minimumTimeoutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.minimumTimeoutToolStripMenuItem.Text = "Minimum timeout";
+            this.minimumTimeoutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.minimumTimeoutToolStripMenuItem.Text = "1500ms timeout";
             this.minimumTimeoutToolStripMenuItem.Click += new System.EventHandler(this.RestartTray);
             // 
             // sTimeoutToolStripMenuItem
             // 
             this.sTimeoutToolStripMenuItem.Name = "sTimeoutToolStripMenuItem";
-            this.sTimeoutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.sTimeoutToolStripMenuItem.Text = "5s timeout";
+            this.sTimeoutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.sTimeoutToolStripMenuItem.Text = "5000ms timeout";
             this.sTimeoutToolStripMenuItem.Click += new System.EventHandler(this.RestartTray);
             // 
             // optionsToolStripMenuItem
@@ -169,35 +169,35 @@
             this.restartServiceUponUSBPlugInToolStripMenuItem,
             this.startApplicationMinimisedToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // defaultRestartUponTrayClickToolStripMenuItem
             // 
             this.defaultRestartUponTrayClickToolStripMenuItem.Name = "defaultRestartUponTrayClickToolStripMenuItem";
-            this.defaultRestartUponTrayClickToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.defaultRestartUponTrayClickToolStripMenuItem.Text = "Default restart upon tray click";
+            this.defaultRestartUponTrayClickToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.defaultRestartUponTrayClickToolStripMenuItem.Text = "Tray click restart";
             this.defaultRestartUponTrayClickToolStripMenuItem.Click += new System.EventHandler(this.IdentifySaver);
             // 
             // restartServiceUponUSBPlugInToolStripMenuItem
             // 
             this.restartServiceUponUSBPlugInToolStripMenuItem.Name = "restartServiceUponUSBPlugInToolStripMenuItem";
-            this.restartServiceUponUSBPlugInToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.restartServiceUponUSBPlugInToolStripMenuItem.Text = "Restart service upon USB plug in";
+            this.restartServiceUponUSBPlugInToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.restartServiceUponUSBPlugInToolStripMenuItem.Text = "USB detection restart";
             this.restartServiceUponUSBPlugInToolStripMenuItem.Click += new System.EventHandler(this.IdentifySaver);
             // 
             // startApplicationMinimisedToolStripMenuItem
             // 
             this.startApplicationMinimisedToolStripMenuItem.Name = "startApplicationMinimisedToolStripMenuItem";
-            this.startApplicationMinimisedToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.startApplicationMinimisedToolStripMenuItem.Text = "Start application minimised";
+            this.startApplicationMinimisedToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.startApplicationMinimisedToolStripMenuItem.Text = "Start minimised";
             this.startApplicationMinimisedToolStripMenuItem.Click += new System.EventHandler(this.IdentifySaver);
             // 
             // closeApplicationToolStripMenuItem
             // 
             this.closeApplicationToolStripMenuItem.Name = "closeApplicationToolStripMenuItem";
-            this.closeApplicationToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.closeApplicationToolStripMenuItem.Text = "Close application";
+            this.closeApplicationToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.closeApplicationToolStripMenuItem.Text = "Exit";
             this.closeApplicationToolStripMenuItem.Click += new System.EventHandler(this.closeApplicationToolStripMenuItem_Click);
             // 
             // backgroundWorker
