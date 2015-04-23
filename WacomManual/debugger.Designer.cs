@@ -49,6 +49,7 @@
             this.lbl_timeout = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -58,9 +59,9 @@
             // 
             this.btn_restart_service.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_restart_service.Location = new System.Drawing.Point(12, 28);
+            this.btn_restart_service.Location = new System.Drawing.Point(114, 2);
             this.btn_restart_service.Name = "btn_restart_service";
-            this.btn_restart_service.Size = new System.Drawing.Size(122, 20);
+            this.btn_restart_service.Size = new System.Drawing.Size(78, 20);
             this.btn_restart_service.TabIndex = 1;
             this.btn_restart_service.Text = "Restart";
             this.btn_restart_service.UseVisualStyleBackColor = true;
@@ -73,10 +74,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rTB_output.BackColor = System.Drawing.SystemColors.MenuText;
             this.rTB_output.ForeColor = System.Drawing.Color.Lime;
-            this.rTB_output.Location = new System.Drawing.Point(12, 49);
+            this.rTB_output.Location = new System.Drawing.Point(12, 28);
             this.rTB_output.Name = "rTB_output";
             this.rTB_output.ReadOnly = true;
-            this.rTB_output.Size = new System.Drawing.Size(468, 208);
+            this.rTB_output.Size = new System.Drawing.Size(468, 229);
             this.rTB_output.TabIndex = 2;
             this.rTB_output.Text = "";
             // 
@@ -88,7 +89,7 @@
             0,
             0,
             0});
-            this.nUD_timeout.Location = new System.Drawing.Point(415, 28);
+            this.nUD_timeout.Location = new System.Drawing.Point(395, 2);
             this.nUD_timeout.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -100,7 +101,7 @@
             0,
             0});
             this.nUD_timeout.Name = "nUD_timeout";
-            this.nUD_timeout.Size = new System.Drawing.Size(65, 20);
+            this.nUD_timeout.Size = new System.Drawing.Size(85, 20);
             this.nUD_timeout.TabIndex = 3;
             this.nUD_timeout.Value = new decimal(new int[] {
             2500,
@@ -213,7 +214,7 @@
             // 
             this.lbl_timeout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_timeout.AutoSize = true;
-            this.lbl_timeout.Location = new System.Drawing.Point(213, 33);
+            this.lbl_timeout.Location = new System.Drawing.Point(198, 6);
             this.lbl_timeout.Name = "lbl_timeout";
             this.lbl_timeout.Size = new System.Drawing.Size(196, 13);
             this.lbl_timeout.TabIndex = 4;
@@ -222,7 +223,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1});
+            this.toolStripDropDownButton1,
+            this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -241,15 +243,20 @@
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(94, 22);
             this.toolStripDropDownButton1.Text = "Quick options";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // Debugger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 269);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.lbl_timeout);
             this.Controls.Add(this.nUD_timeout);
             this.Controls.Add(this.btn_restart_service);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.rTB_output);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(270, 200);
@@ -286,6 +293,7 @@
         private System.Windows.Forms.Label lbl_timeout;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 
     }
 }
