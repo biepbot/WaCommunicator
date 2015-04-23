@@ -96,6 +96,7 @@ namespace WaCommunicator
         {
             //On press, restart
             service = new ServiceController(serviceName);
+            loops = 0;
             Restart(Convert.ToInt32(nUD_timeout.Value));
         }
         #endregion
@@ -319,6 +320,8 @@ namespace WaCommunicator
                 {
                     //Notify the user of said restart
                     NotifyIcon.ShowBalloonTip(3000, "USB Device recognised", "Please wait!", ToolTipIcon.Info);
+                    //Set everything correctly before restart
+                    loops = 0;
                     pluggedIn = true;
                     service = new ServiceController(serviceName);
                     Restart(2500, 1000);
