@@ -46,6 +46,7 @@
             this.startApplicationMinimisedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.lbl_timeout = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -56,9 +57,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_restart_service.Location = new System.Drawing.Point(12, 12);
             this.btn_restart_service.Name = "btn_restart_service";
-            this.btn_restart_service.Size = new System.Drawing.Size(366, 23);
+            this.btn_restart_service.Size = new System.Drawing.Size(164, 23);
             this.btn_restart_service.TabIndex = 1;
-            this.btn_restart_service.Text = "Restart service ( timeout: ";
+            this.btn_restart_service.Text = "Restart";
             this.btn_restart_service.UseVisualStyleBackColor = true;
             this.btn_restart_service.Click += new System.EventHandler(this.btn_restart_service_Click);
             // 
@@ -204,11 +205,22 @@
             // 
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
+            // lbl_timeout
+            // 
+            this.lbl_timeout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_timeout.AutoSize = true;
+            this.lbl_timeout.Location = new System.Drawing.Point(182, 17);
+            this.lbl_timeout.Name = "lbl_timeout";
+            this.lbl_timeout.Size = new System.Drawing.Size(196, 13);
+            this.lbl_timeout.TabIndex = 4;
+            this.lbl_timeout.Text = "Timeout (in milliseconds, 2500 is default)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 269);
+            this.Controls.Add(this.lbl_timeout);
             this.Controls.Add(this.nUD_timeout);
             this.Controls.Add(this.rTB_output);
             this.Controls.Add(this.btn_restart_service);
@@ -220,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -241,6 +254,7 @@
         private System.Windows.Forms.ToolStripMenuItem startApplicationMinimisedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restartServiceUponUSBPlugInToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.Label lbl_timeout;
 
     }
 }
