@@ -51,6 +51,7 @@
             this.msTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msTimeoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.msTimeoutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.TsLog = new System.Windows.Forms.ToolStripDropDownButton();
             this.TsSubLog = new System.Windows.Forms.ToolStripMenuItem();
             this.TsClearLog = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,11 +61,10 @@
             this.TsTCRoption = new System.Windows.Forms.ToolStripMenuItem();
             this.TsUSBDrestartOption = new System.Windows.Forms.ToolStripMenuItem();
             this.TsSMOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsExitButton = new System.Windows.Forms.ToolStripButton();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.TsExitButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.labelCredit = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -87,7 +87,8 @@
             // 
             // nUD_timeout
             // 
-            this.nUD_timeout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nUD_timeout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nUD_timeout.Increment = new decimal(new int[] {
             100,
             0,
@@ -105,7 +106,7 @@
             0,
             0});
             this.nUD_timeout.Name = "nUD_timeout";
-            this.nUD_timeout.Size = new System.Drawing.Size(85, 20);
+            this.nUD_timeout.Size = new System.Drawing.Size(207, 20);
             this.nUD_timeout.TabIndex = 3;
             this.nUD_timeout.Value = new decimal(new int[] {
             2500,
@@ -216,7 +217,6 @@
             // 
             // lbl_timeout
             // 
-            this.lbl_timeout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_timeout.AutoSize = true;
             this.lbl_timeout.BackColor = System.Drawing.Color.Transparent;
             this.lbl_timeout.Location = new System.Drawing.Point(173, 5);
@@ -278,6 +278,11 @@
             this.msTimeoutToolStripMenuItem2.Text = "5000ms timeout";
             this.msTimeoutToolStripMenuItem2.Click += new System.EventHandler(this.RestartTray);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // TsLog
             // 
             this.TsLog.AutoToolTip = false;
@@ -297,7 +302,7 @@
             this.TsClearLog,
             this.TsUndoLogClear});
             this.TsSubLog.Name = "TsSubLog";
-            this.TsSubLog.Size = new System.Drawing.Size(152, 22);
+            this.TsSubLog.Size = new System.Drawing.Size(131, 22);
             this.TsSubLog.Text = "Manage";
             // 
             // TsClearLog
@@ -317,7 +322,7 @@
             // TsSaveLog
             // 
             this.TsSaveLog.Name = "TsSaveLog";
-            this.TsSaveLog.Size = new System.Drawing.Size(152, 22);
+            this.TsSaveLog.Size = new System.Drawing.Size(131, 22);
             this.TsSaveLog.Text = "Save to file";
             this.TsSaveLog.Click += new System.EventHandler(this.TsSaveLog_Click);
             // 
@@ -356,6 +361,11 @@
             this.TsSMOption.Text = "Start minimised";
             this.TsSMOption.Click += new System.EventHandler(this.IdentifySaver);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // TsExitButton
             // 
             this.TsExitButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -368,27 +378,17 @@
             this.TsExitButton.Text = "Exit";
             this.TsExitButton.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.DefaultExt = "txt";
-            this.saveFileDialog.Filter = "Text file |*.txt";
-            this.saveFileDialog.Title = "Save debug log";
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripSeparator2
+            // saveFileDialog
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.saveFileDialog.DefaultExt = "txt";
+            this.saveFileDialog.Filter = "Text file |*.txt";
+            this.saveFileDialog.Title = "Save debug log";
             // 
             // labelCredit
             // 
@@ -411,7 +411,7 @@
             this.Controls.Add(this.tSMain);
             this.Controls.Add(this.rTB_output);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(270, 200);
+            this.MinimumSize = new System.Drawing.Size(350, 200);
             this.Name = "Debugger";
             this.Text = "WaCommunicator";
             this.Resize += new System.EventHandler(this.Form1_Resize);
