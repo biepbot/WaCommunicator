@@ -7,12 +7,15 @@ Has the option to
 - Reset on tray click (option)
 - Reset on usb plug in (option)
 - Start minimised (option)
-- Not CPU or RAM intensive
 - Save/load these options
+- Save the logs
+- Clear the logs
 
 Supports:
 - Wacom Intuos Pro
 - Wacom Pen and Touch
 (both wired and wireless)
+
+Easy to use and it's not CPU or RAM intensive!
 
 Reply for ideas, encountered bugs, etc please!
