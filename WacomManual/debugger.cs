@@ -105,13 +105,18 @@ namespace WaCommunicator
         #region Special Toolstrip configuration
         private void TsClearLog_Click(object sender, EventArgs e)
         {
-            lastOutput = rTB_output.Text;
+            //Set last clear if not the same, then clear
+            if (lastOutput != rTB_output.Text)
+            {
+                lastOutput = rTB_output.Text;
+            }
             rTB_output.Clear();
             Newline("Log cleared");
         }
 
         private void TsUndoLastLogClear_Click(object sender, EventArgs e)
         {
+            //Recover last clear
             rTB_output.Text = lastOutput;
         }
 

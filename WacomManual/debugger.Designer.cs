@@ -57,11 +57,11 @@
             this.TsSMOption = new System.Windows.Forms.ToolStripMenuItem();
             this.TsExitButton = new System.Windows.Forms.ToolStripButton();
             this.TsLog = new System.Windows.Forms.ToolStripDropDownButton();
-            this.TsClearLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsSubLog = new System.Windows.Forms.ToolStripMenuItem();
             this.TsSaveLog = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.TsUndoLastLogClear = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsConfirmClearLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsUndoLogClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsClearLog = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -316,7 +316,7 @@
             // 
             this.TsLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.TsLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TsClearLog,
+            this.TsSubLog,
             this.TsSaveLog});
             this.TsLog.Image = ((System.Drawing.Image)(resources.GetObject("TsLog.Image")));
             this.TsLog.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -324,20 +324,20 @@
             this.TsLog.Size = new System.Drawing.Size(40, 22);
             this.TsLog.Text = "Log";
             // 
-            // TsClearLog
+            // TsSubLog
             // 
-            this.TsClearLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TsUndoLastLogClear,
-            this.TsConfirmClearLog});
-            this.TsClearLog.Name = "TsClearLog";
-            this.TsClearLog.Size = new System.Drawing.Size(152, 22);
-            this.TsClearLog.Text = "Clear log";
+            this.TsSubLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsClearLog,
+            this.TsUndoLogClear});
+            this.TsSubLog.Name = "TsSubLog";
+            this.TsSubLog.Size = new System.Drawing.Size(152, 22);
+            this.TsSubLog.Text = "Manage";
             // 
             // TsSaveLog
             // 
             this.TsSaveLog.Name = "TsSaveLog";
             this.TsSaveLog.Size = new System.Drawing.Size(152, 22);
-            this.TsSaveLog.Text = "Save log to file";
+            this.TsSaveLog.Text = "Save to file";
             this.TsSaveLog.Click += new System.EventHandler(this.TsSaveLog_Click);
             // 
             // saveFileDialog
@@ -346,19 +346,19 @@
             this.saveFileDialog.Filter = "Text file |*.txt";
             this.saveFileDialog.Title = "Save debug log";
             // 
-            // TsUndoLastLogClear
+            // TsUndoLogClear
             // 
-            this.TsUndoLastLogClear.Name = "TsUndoLastLogClear";
-            this.TsUndoLastLogClear.Size = new System.Drawing.Size(152, 22);
-            this.TsUndoLastLogClear.Text = "Undo last clear";
-            this.TsUndoLastLogClear.Click += new System.EventHandler(this.TsUndoLastLogClear_Click);
+            this.TsUndoLogClear.Name = "TsUndoLogClear";
+            this.TsUndoLogClear.Size = new System.Drawing.Size(152, 22);
+            this.TsUndoLogClear.Text = "Undo clear";
+            this.TsUndoLogClear.Click += new System.EventHandler(this.TsUndoLastLogClear_Click);
             // 
-            // TsConfirmClearLog
+            // TsClearLog
             // 
-            this.TsConfirmClearLog.Name = "TsConfirmClearLog";
-            this.TsConfirmClearLog.Size = new System.Drawing.Size(152, 22);
-            this.TsConfirmClearLog.Text = "Confirm clear";
-            this.TsConfirmClearLog.Click += new System.EventHandler(this.TsClearLog_Click);
+            this.TsClearLog.Name = "TsClearLog";
+            this.TsClearLog.Size = new System.Drawing.Size(152, 22);
+            this.TsClearLog.Text = "Clear";
+            this.TsClearLog.Click += new System.EventHandler(this.TsClearLog_Click);
             // 
             // Debugger
             // 
@@ -412,11 +412,11 @@
         private System.Windows.Forms.ToolStripMenuItem msTimeoutToolStripMenuItem2;
         private System.Windows.Forms.ToolStripButton TsExitButton;
         private System.Windows.Forms.ToolStripDropDownButton TsLog;
-        private System.Windows.Forms.ToolStripMenuItem TsClearLog;
+        private System.Windows.Forms.ToolStripMenuItem TsSubLog;
         private System.Windows.Forms.ToolStripMenuItem TsSaveLog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.ToolStripMenuItem TsUndoLastLogClear;
-        private System.Windows.Forms.ToolStripMenuItem TsConfirmClearLog;
+        private System.Windows.Forms.ToolStripMenuItem TsUndoLogClear;
+        private System.Windows.Forms.ToolStripMenuItem TsClearLog;
 
     }
 }
