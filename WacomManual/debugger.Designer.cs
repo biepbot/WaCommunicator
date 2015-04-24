@@ -92,7 +92,7 @@
             0,
             0,
             0});
-            this.nUD_timeout.Location = new System.Drawing.Point(395, 4);
+            this.nUD_timeout.Location = new System.Drawing.Point(246, 3);
             this.nUD_timeout.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -217,7 +217,8 @@
             // 
             this.lbl_timeout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_timeout.AutoSize = true;
-            this.lbl_timeout.Location = new System.Drawing.Point(322, 6);
+            this.lbl_timeout.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_timeout.Location = new System.Drawing.Point(173, 5);
             this.lbl_timeout.Name = "lbl_timeout";
             this.lbl_timeout.Size = new System.Drawing.Size(67, 13);
             this.lbl_timeout.TabIndex = 4;
@@ -352,6 +353,7 @@
             // 
             // TsExitButton
             // 
+            this.TsExitButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.TsExitButton.AutoToolTip = false;
             this.TsExitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.TsExitButton.Image = ((System.Drawing.Image)(resources.GetObject("TsExitButton.Image")));
@@ -369,6 +371,7 @@
             // 
             // toolStripSeparator1
             // 
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
