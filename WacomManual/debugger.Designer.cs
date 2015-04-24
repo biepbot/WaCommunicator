@@ -51,17 +51,17 @@
             this.msTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msTimeoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.msTimeoutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsLog = new System.Windows.Forms.ToolStripDropDownButton();
+            this.TsSubLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsClearLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsUndoLogClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsSaveLog = new System.Windows.Forms.ToolStripMenuItem();
             this.tSOptions = new System.Windows.Forms.ToolStripDropDownButton();
             this.TsTCRoption = new System.Windows.Forms.ToolStripMenuItem();
             this.TsUSBDrestartOption = new System.Windows.Forms.ToolStripMenuItem();
             this.TsSMOption = new System.Windows.Forms.ToolStripMenuItem();
             this.TsExitButton = new System.Windows.Forms.ToolStripButton();
-            this.TsLog = new System.Windows.Forms.ToolStripDropDownButton();
-            this.TsSubLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsSaveLog = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.TsUndoLogClear = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsClearLog = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -127,14 +127,14 @@
             this.CmOptions,
             this.CmExit});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(136, 92);
+            this.contextMenuStrip.Size = new System.Drawing.Size(153, 114);
             this.contextMenuStrip.Text = "Options";
             // 
             // CmRestoreScreen
             // 
             this.CmRestoreScreen.Name = "CmRestoreScreen";
-            this.CmRestoreScreen.Size = new System.Drawing.Size(135, 22);
-            this.CmRestoreScreen.Text = "See log";
+            this.CmRestoreScreen.Size = new System.Drawing.Size(152, 22);
+            this.CmRestoreScreen.Text = "View log";
             this.CmRestoreScreen.Click += new System.EventHandler(this.RestoreScreen_Click);
             // 
             // CmReset
@@ -144,7 +144,7 @@
             this.defaultTimeoutToolStripMenuItem,
             this.sTimeoutToolStripMenuItem});
             this.CmReset.Name = "CmReset";
-            this.CmReset.Size = new System.Drawing.Size(135, 22);
+            this.CmReset.Size = new System.Drawing.Size(152, 22);
             this.CmReset.Text = "Reset driver";
             // 
             // minimumTimeoutToolStripMenuItem
@@ -175,7 +175,7 @@
             this.CmUSBROption,
             this.CmSMOption});
             this.CmOptions.Name = "CmOptions";
-            this.CmOptions.Size = new System.Drawing.Size(135, 22);
+            this.CmOptions.Size = new System.Drawing.Size(152, 22);
             this.CmOptions.Text = "Options";
             // 
             // CmTCROption
@@ -202,7 +202,7 @@
             // CmExit
             // 
             this.CmExit.Name = "CmExit";
-            this.CmExit.Size = new System.Drawing.Size(135, 22);
+            this.CmExit.Size = new System.Drawing.Size(152, 22);
             this.CmExit.Text = "Exit";
             this.CmExit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -269,6 +269,48 @@
             this.msTimeoutToolStripMenuItem2.Text = "5000ms timeout";
             this.msTimeoutToolStripMenuItem2.Click += new System.EventHandler(this.RestartTray);
             // 
+            // TsLog
+            // 
+            this.TsLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TsLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsSubLog,
+            this.TsSaveLog});
+            this.TsLog.Image = ((System.Drawing.Image)(resources.GetObject("TsLog.Image")));
+            this.TsLog.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsLog.Name = "TsLog";
+            this.TsLog.Size = new System.Drawing.Size(40, 22);
+            this.TsLog.Text = "Log";
+            // 
+            // TsSubLog
+            // 
+            this.TsSubLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsClearLog,
+            this.TsUndoLogClear});
+            this.TsSubLog.Name = "TsSubLog";
+            this.TsSubLog.Size = new System.Drawing.Size(131, 22);
+            this.TsSubLog.Text = "Manage";
+            // 
+            // TsClearLog
+            // 
+            this.TsClearLog.Name = "TsClearLog";
+            this.TsClearLog.Size = new System.Drawing.Size(131, 22);
+            this.TsClearLog.Text = "Clear";
+            this.TsClearLog.Click += new System.EventHandler(this.TsClearLog_Click);
+            // 
+            // TsUndoLogClear
+            // 
+            this.TsUndoLogClear.Name = "TsUndoLogClear";
+            this.TsUndoLogClear.Size = new System.Drawing.Size(131, 22);
+            this.TsUndoLogClear.Text = "Undo clear";
+            this.TsUndoLogClear.Click += new System.EventHandler(this.TsUndoLogClear_Click);
+            // 
+            // TsSaveLog
+            // 
+            this.TsSaveLog.Name = "TsSaveLog";
+            this.TsSaveLog.Size = new System.Drawing.Size(131, 22);
+            this.TsSaveLog.Text = "Save to file";
+            this.TsSaveLog.Click += new System.EventHandler(this.TsSaveLog_Click);
+            // 
             // tSOptions
             // 
             this.tSOptions.AutoToolTip = false;
@@ -312,53 +354,11 @@
             this.TsExitButton.Text = "Exit";
             this.TsExitButton.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // TsLog
-            // 
-            this.TsLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.TsLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TsSubLog,
-            this.TsSaveLog});
-            this.TsLog.Image = ((System.Drawing.Image)(resources.GetObject("TsLog.Image")));
-            this.TsLog.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TsLog.Name = "TsLog";
-            this.TsLog.Size = new System.Drawing.Size(40, 22);
-            this.TsLog.Text = "Log";
-            // 
-            // TsSubLog
-            // 
-            this.TsSubLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TsClearLog,
-            this.TsUndoLogClear});
-            this.TsSubLog.Name = "TsSubLog";
-            this.TsSubLog.Size = new System.Drawing.Size(152, 22);
-            this.TsSubLog.Text = "Manage";
-            // 
-            // TsSaveLog
-            // 
-            this.TsSaveLog.Name = "TsSaveLog";
-            this.TsSaveLog.Size = new System.Drawing.Size(152, 22);
-            this.TsSaveLog.Text = "Save to file";
-            this.TsSaveLog.Click += new System.EventHandler(this.TsSaveLog_Click);
-            // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "txt";
             this.saveFileDialog.Filter = "Text file |*.txt";
             this.saveFileDialog.Title = "Save debug log";
-            // 
-            // TsUndoLogClear
-            // 
-            this.TsUndoLogClear.Name = "TsUndoLogClear";
-            this.TsUndoLogClear.Size = new System.Drawing.Size(152, 22);
-            this.TsUndoLogClear.Text = "Undo clear";
-            this.TsUndoLogClear.Click += new System.EventHandler(this.TsUndoLogClear_Click);
-            // 
-            // TsClearLog
-            // 
-            this.TsClearLog.Name = "TsClearLog";
-            this.TsClearLog.Size = new System.Drawing.Size(152, 22);
-            this.TsClearLog.Text = "Clear";
-            this.TsClearLog.Click += new System.EventHandler(this.TsClearLog_Click);
             // 
             // Debugger
             // 
