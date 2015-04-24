@@ -46,7 +46,7 @@
             this.CmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.lbl_timeout = new System.Windows.Forms.Label();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tSMain = new System.Windows.Forms.ToolStrip();
             this.TsRestartbutton = new System.Windows.Forms.ToolStripSplitButton();
             this.msTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msTimeoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,9 +62,12 @@
             this.TsSMOption = new System.Windows.Forms.ToolStripMenuItem();
             this.TsExitButton = new System.Windows.Forms.ToolStripButton();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tSMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // rTB_output
@@ -127,13 +130,13 @@
             this.CmOptions,
             this.CmExit});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(153, 114);
+            this.contextMenuStrip.Size = new System.Drawing.Size(136, 92);
             this.contextMenuStrip.Text = "Options";
             // 
             // CmRestoreScreen
             // 
             this.CmRestoreScreen.Name = "CmRestoreScreen";
-            this.CmRestoreScreen.Size = new System.Drawing.Size(152, 22);
+            this.CmRestoreScreen.Size = new System.Drawing.Size(135, 22);
             this.CmRestoreScreen.Text = "View log";
             this.CmRestoreScreen.Click += new System.EventHandler(this.RestoreScreen_Click);
             // 
@@ -144,7 +147,7 @@
             this.defaultTimeoutToolStripMenuItem,
             this.sTimeoutToolStripMenuItem});
             this.CmReset.Name = "CmReset";
-            this.CmReset.Size = new System.Drawing.Size(152, 22);
+            this.CmReset.Size = new System.Drawing.Size(135, 22);
             this.CmReset.Text = "Reset driver";
             // 
             // minimumTimeoutToolStripMenuItem
@@ -175,7 +178,7 @@
             this.CmUSBROption,
             this.CmSMOption});
             this.CmOptions.Name = "CmOptions";
-            this.CmOptions.Size = new System.Drawing.Size(152, 22);
+            this.CmOptions.Size = new System.Drawing.Size(135, 22);
             this.CmOptions.Text = "Options";
             // 
             // CmTCROption
@@ -202,7 +205,7 @@
             // CmExit
             // 
             this.CmExit.Name = "CmExit";
-            this.CmExit.Size = new System.Drawing.Size(152, 22);
+            this.CmExit.Size = new System.Drawing.Size(135, 22);
             this.CmExit.Text = "Exit";
             this.CmExit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -220,18 +223,22 @@
             this.lbl_timeout.TabIndex = 4;
             this.lbl_timeout.Text = "Timeout (ms)";
             // 
-            // toolStrip1
+            // tSMain
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tSMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tSMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsRestartbutton,
+            this.toolStripSeparator3,
             this.TsLog,
             this.tSOptions,
-            this.TsExitButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(492, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip";
+            this.toolStripSeparator2,
+            this.TsExitButton,
+            this.toolStripSeparator1});
+            this.tSMain.Location = new System.Drawing.Point(0, 0);
+            this.tSMain.Name = "tSMain";
+            this.tSMain.Size = new System.Drawing.Size(492, 25);
+            this.tSMain.TabIndex = 5;
+            this.tSMain.Text = "toolStrip";
             // 
             // TsRestartbutton
             // 
@@ -360,6 +367,21 @@
             this.saveFileDialog.Filter = "Text file |*.txt";
             this.saveFileDialog.Title = "Save debug log";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // Debugger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,7 +389,7 @@
             this.ClientSize = new System.Drawing.Size(492, 269);
             this.Controls.Add(this.lbl_timeout);
             this.Controls.Add(this.nUD_timeout);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.tSMain);
             this.Controls.Add(this.rTB_output);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(270, 200);
@@ -376,8 +398,8 @@
             this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tSMain.ResumeLayout(false);
+            this.tSMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,7 +423,7 @@
         private System.Windows.Forms.ToolStripMenuItem CmUSBROption;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Label lbl_timeout;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip tSMain;
         private System.Windows.Forms.ToolStripDropDownButton tSOptions;
         private System.Windows.Forms.ToolStripMenuItem TsTCRoption;
         private System.Windows.Forms.ToolStripMenuItem TsUSBDrestartOption;
@@ -417,6 +439,9 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.ToolStripMenuItem TsUndoLogClear;
         private System.Windows.Forms.ToolStripMenuItem TsClearLog;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 
     }
 }
