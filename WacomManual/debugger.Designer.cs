@@ -279,11 +279,11 @@
             // 
             // TsLog
             // 
+            this.TsLog.AutoToolTip = false;
             this.TsLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.TsLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsSubLog,
             this.TsSaveLog});
-            this.TsLog.Enabled = false;
             this.TsLog.Image = ((System.Drawing.Image)(resources.GetObject("TsLog.Image")));
             this.TsLog.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsLog.Name = "TsLog";
