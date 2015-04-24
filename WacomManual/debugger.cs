@@ -169,7 +169,7 @@ namespace WaCommunicator
             string a = sender.ToString();
 
             //Notify the user
-            NotifyIcon.ShowBalloonTip(3000, "Restarting the driver", "Please wait!", ToolTipIcon.Info);
+            NotifyIcon.ShowBalloonTip(2000, "Restarting the driver", "Please wait!", ToolTipIcon.Info);
 
             //Initialise restart
             loops = 0;
@@ -253,7 +253,7 @@ namespace WaCommunicator
                     Newline("Service: " + serviceName + " successfully launched");
                     Newline("Done and ready to go!");
 
-                    NotifyIcon.ShowBalloonTip(3000, "Wacom driver restarted!", "Give it time to load resources fully...", ToolTipIcon.Info);
+                    NotifyIcon.ShowBalloonTip(2000, "Wacom driver restarted!", "Give it time to load resources fully...", ToolTipIcon.Info);
                 }
                 catch (Exception ex)
                 {
@@ -266,7 +266,7 @@ namespace WaCommunicator
                         Newline("Are you running the application with administrator rights?");
                         loops = 0;
 
-                        NotifyIcon.ShowBalloonTip(3000, "Not enough rights!", "Run the application with admin rights", ToolTipIcon.Warning);
+                        NotifyIcon.ShowBalloonTip(2000, "Not enough rights!", "Run the application with admin rights", ToolTipIcon.Warning);
                     }
                     else
                     {
@@ -277,14 +277,14 @@ namespace WaCommunicator
                             Newline("Is the '" + serviceName + "' service installed (correctly)?");
                             loops = 0;
 
-                            NotifyIcon.ShowBalloonTip(3000, "Service not found!", "Is the service present?", ToolTipIcon.Error);
+                            NotifyIcon.ShowBalloonTip(2000, "Service not found!", "Is the service present?", ToolTipIcon.Error);
                         }
                         else
                         {
                             //Else try again
                             Restart(Convert.ToInt32(nUD_timeout.Value));
 
-                            NotifyIcon.ShowBalloonTip(3000, "Failed to restart", "Trying again...", ToolTipIcon.Warning);
+                            NotifyIcon.ShowBalloonTip(2000, "Failed to restart", "Trying again...", ToolTipIcon.Warning);
                         }
                     }
                 }
