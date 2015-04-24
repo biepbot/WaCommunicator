@@ -105,7 +105,7 @@ namespace WaCommunicator
         private void TsClearLog_Click(object sender, EventArgs e)
         {
             //Set last clear if not the same, then clear
-            if (lastOutput != rTB_output.Text)
+            if (lastOutput != rTB_output.Text && rTB_output.Lines.Count() > 2)
             {
                 lastOutput = rTB_output.Text;
             }
