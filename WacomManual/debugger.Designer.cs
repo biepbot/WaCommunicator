@@ -246,7 +246,7 @@
             this.TsRestartbutton.Size = new System.Drawing.Size(59, 22);
             this.TsRestartbutton.Text = "Restart";
             this.TsRestartbutton.ToolTipText = "Restart with the timeout defined";
-            this.TsRestartbutton.ButtonClick += new System.EventHandler(this.btn_restart_service_Click);
+            this.TsRestartbutton.ButtonClick += new System.EventHandler(this.TsRestart_Click);
             // 
             // msTimeoutToolStripMenuItem
             // 
@@ -351,7 +351,7 @@
             this.TsUndoLogClear.Name = "TsUndoLogClear";
             this.TsUndoLogClear.Size = new System.Drawing.Size(152, 22);
             this.TsUndoLogClear.Text = "Undo clear";
-            this.TsUndoLogClear.Click += new System.EventHandler(this.TsUndoLastLogClear_Click);
+            this.TsUndoLogClear.Click += new System.EventHandler(this.TsUndoLogClear_Click);
             // 
             // TsClearLog
             // 

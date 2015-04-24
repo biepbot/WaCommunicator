@@ -94,15 +94,14 @@ namespace WaCommunicator
         }
         #endregion
 
-        #region Button configuration
-        private void btn_restart_service_Click(object sender, EventArgs e)
+        #region Uncommon Toolstrip (button) configuration
+        private void TsRestart_Click(object sender, EventArgs e)
         {
             //On press, restart
             loops = 0;
             Restart(Convert.ToInt32(nUD_timeout.Value));
         }
 
-        #region Special Toolstrip configuration
         private void TsClearLog_Click(object sender, EventArgs e)
         {
             //Set last clear if not the same, then clear
@@ -114,7 +113,7 @@ namespace WaCommunicator
             Newline("Log cleared");
         }
 
-        private void TsUndoLastLogClear_Click(object sender, EventArgs e)
+        private void TsUndoLogClear_Click(object sender, EventArgs e)
         {
             //Recover last clear
             rTB_output.Text = lastOutput;
@@ -144,8 +143,6 @@ namespace WaCommunicator
                 }
             }
         }
-        #endregion
-
         #endregion
 
         #region Inner functional methods; restarting and debugging
