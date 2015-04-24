@@ -58,7 +58,7 @@ namespace WaCommunicator
             }
 
             //Init
-            Newline(DateTime.Now.TimeOfDay.ToString("hh\\:mm\\:ss") + " - User detected, settings loaded");
+            Newline("User detected, settings loaded");
             timeoutMilliseconds = Convert.ToInt32(nUD_timeout.Value);
             loops = 0;
             pluggedIn = IsUsbDeviceConnected("056A");
@@ -132,7 +132,10 @@ namespace WaCommunicator
                     using (FileStream f = new FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write))
                     {
                         StreamWriter strWr = new StreamWriter(f);
-                        strWr.Write(rTB_output.Text);
+                        foreach (string line in rTB_output.Lines)
+                        {
+                            strWr.Write(line + Environment.NewLine);
+                        }
                         strWr.Close();
                     }
                 }
