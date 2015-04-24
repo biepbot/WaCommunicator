@@ -339,18 +339,21 @@
             this.TsTCRoption.Name = "TsTCRoption";
             this.TsTCRoption.Size = new System.Drawing.Size(184, 22);
             this.TsTCRoption.Text = "Tray click restart";
+            this.TsTCRoption.Click += new System.EventHandler(this.IdentifySaver);
             // 
             // TsUSBDrestartOption
             // 
             this.TsUSBDrestartOption.Name = "TsUSBDrestartOption";
             this.TsUSBDrestartOption.Size = new System.Drawing.Size(184, 22);
             this.TsUSBDrestartOption.Text = "USB detection restart";
+            this.TsUSBDrestartOption.Click += new System.EventHandler(this.IdentifySaver);
             // 
             // TsSMOption
             // 
             this.TsSMOption.Name = "TsSMOption";
             this.TsSMOption.Size = new System.Drawing.Size(184, 22);
             this.TsSMOption.Text = "Start minimised";
+            this.TsSMOption.Click += new System.EventHandler(this.IdentifySaver);
             // 
             // TsExitButton
             // 
