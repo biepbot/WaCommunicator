@@ -30,42 +30,42 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Debugger));
-            this.btn_restart_service = new System.Windows.Forms.Button();
             this.rTB_output = new System.Windows.Forms.RichTextBox();
             this.nUD_timeout = new System.Windows.Forms.NumericUpDown();
             this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetDriverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmRestoreScreen = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmReset = new System.Windows.Forms.ToolStripMenuItem();
             this.minimumTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defaultTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.defaultRestartUponTrayClickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.restartServiceUponUSBPlugInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startApplicationMinimisedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmTCROption = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmUSBROption = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmSMOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.lbl_timeout = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.TsRestartbutton = new System.Windows.Forms.ToolStripSplitButton();
+            this.msTimeoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msTimeoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.msTimeoutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSOptions = new System.Windows.Forms.ToolStripDropDownButton();
+            this.TsTCRoption = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsUSBDrestartOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsSMOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsExitButton = new System.Windows.Forms.ToolStripButton();
+            this.TsLog = new System.Windows.Forms.ToolStripDropDownButton();
+            this.TsClearLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsSaveLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.TsUndoLastLogClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsConfirmClearLog = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btn_restart_service
-            // 
-            this.btn_restart_service.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_restart_service.Location = new System.Drawing.Point(114, 2);
-            this.btn_restart_service.Name = "btn_restart_service";
-            this.btn_restart_service.Size = new System.Drawing.Size(78, 20);
-            this.btn_restart_service.TabIndex = 1;
-            this.btn_restart_service.Text = "Restart";
-            this.btn_restart_service.UseVisualStyleBackColor = true;
-            this.btn_restart_service.Click += new System.EventHandler(this.btn_restart_service_Click);
             // 
             // rTB_output
             // 
@@ -89,7 +89,7 @@
             0,
             0,
             0});
-            this.nUD_timeout.Location = new System.Drawing.Point(395, 2);
+            this.nUD_timeout.Location = new System.Drawing.Point(395, 4);
             this.nUD_timeout.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -122,30 +122,30 @@
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.restoreToolStripMenuItem,
-            this.resetDriverToolStripMenuItem,
-            this.optionsToolStripMenuItem,
-            this.closeApplicationToolStripMenuItem});
+            this.CmRestoreScreen,
+            this.CmReset,
+            this.CmOptions,
+            this.CmExit});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.Size = new System.Drawing.Size(136, 92);
             this.contextMenuStrip.Text = "Options";
             // 
-            // restoreToolStripMenuItem
+            // CmRestoreScreen
             // 
-            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.restoreToolStripMenuItem.Text = "See log";
-            this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
+            this.CmRestoreScreen.Name = "CmRestoreScreen";
+            this.CmRestoreScreen.Size = new System.Drawing.Size(135, 22);
+            this.CmRestoreScreen.Text = "See log";
+            this.CmRestoreScreen.Click += new System.EventHandler(this.RestoreScreen_Click);
             // 
-            // resetDriverToolStripMenuItem
+            // CmReset
             // 
-            this.resetDriverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CmReset.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.minimumTimeoutToolStripMenuItem,
             this.defaultTimeoutToolStripMenuItem,
             this.sTimeoutToolStripMenuItem});
-            this.resetDriverToolStripMenuItem.Name = "resetDriverToolStripMenuItem";
-            this.resetDriverToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.resetDriverToolStripMenuItem.Text = "Reset driver";
+            this.CmReset.Name = "CmReset";
+            this.CmReset.Size = new System.Drawing.Size(135, 22);
+            this.CmReset.Text = "Reset driver";
             // 
             // minimumTimeoutToolStripMenuItem
             // 
@@ -168,43 +168,43 @@
             this.sTimeoutToolStripMenuItem.Text = "5000ms timeout";
             this.sTimeoutToolStripMenuItem.Click += new System.EventHandler(this.RestartTray);
             // 
-            // optionsToolStripMenuItem
+            // CmOptions
             // 
-            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.defaultRestartUponTrayClickToolStripMenuItem,
-            this.restartServiceUponUSBPlugInToolStripMenuItem,
-            this.startApplicationMinimisedToolStripMenuItem});
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.optionsToolStripMenuItem.Text = "Options";
+            this.CmOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CmTCROption,
+            this.CmUSBROption,
+            this.CmSMOption});
+            this.CmOptions.Name = "CmOptions";
+            this.CmOptions.Size = new System.Drawing.Size(135, 22);
+            this.CmOptions.Text = "Options";
             // 
-            // defaultRestartUponTrayClickToolStripMenuItem
+            // CmTCROption
             // 
-            this.defaultRestartUponTrayClickToolStripMenuItem.Name = "defaultRestartUponTrayClickToolStripMenuItem";
-            this.defaultRestartUponTrayClickToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.defaultRestartUponTrayClickToolStripMenuItem.Text = "Tray click restart";
-            this.defaultRestartUponTrayClickToolStripMenuItem.Click += new System.EventHandler(this.IdentifySaver);
+            this.CmTCROption.Name = "CmTCROption";
+            this.CmTCROption.Size = new System.Drawing.Size(184, 22);
+            this.CmTCROption.Text = "Tray click restart";
+            this.CmTCROption.Click += new System.EventHandler(this.IdentifySaver);
             // 
-            // restartServiceUponUSBPlugInToolStripMenuItem
+            // CmUSBROption
             // 
-            this.restartServiceUponUSBPlugInToolStripMenuItem.Name = "restartServiceUponUSBPlugInToolStripMenuItem";
-            this.restartServiceUponUSBPlugInToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.restartServiceUponUSBPlugInToolStripMenuItem.Text = "USB detection restart";
-            this.restartServiceUponUSBPlugInToolStripMenuItem.Click += new System.EventHandler(this.IdentifySaver);
+            this.CmUSBROption.Name = "CmUSBROption";
+            this.CmUSBROption.Size = new System.Drawing.Size(184, 22);
+            this.CmUSBROption.Text = "USB detection restart";
+            this.CmUSBROption.Click += new System.EventHandler(this.IdentifySaver);
             // 
-            // startApplicationMinimisedToolStripMenuItem
+            // CmSMOption
             // 
-            this.startApplicationMinimisedToolStripMenuItem.Name = "startApplicationMinimisedToolStripMenuItem";
-            this.startApplicationMinimisedToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.startApplicationMinimisedToolStripMenuItem.Text = "Start minimised";
-            this.startApplicationMinimisedToolStripMenuItem.Click += new System.EventHandler(this.IdentifySaver);
+            this.CmSMOption.Name = "CmSMOption";
+            this.CmSMOption.Size = new System.Drawing.Size(184, 22);
+            this.CmSMOption.Text = "Start minimised";
+            this.CmSMOption.Click += new System.EventHandler(this.IdentifySaver);
             // 
-            // closeApplicationToolStripMenuItem
+            // CmExit
             // 
-            this.closeApplicationToolStripMenuItem.Name = "closeApplicationToolStripMenuItem";
-            this.closeApplicationToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.closeApplicationToolStripMenuItem.Text = "Exit";
-            this.closeApplicationToolStripMenuItem.Click += new System.EventHandler(this.closeApplicationToolStripMenuItem_Click);
+            this.CmExit.Name = "CmExit";
+            this.CmExit.Size = new System.Drawing.Size(135, 22);
+            this.CmExit.Text = "Exit";
+            this.CmExit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // backgroundWorker
             // 
@@ -214,39 +214,151 @@
             // 
             this.lbl_timeout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_timeout.AutoSize = true;
-            this.lbl_timeout.Location = new System.Drawing.Point(198, 6);
+            this.lbl_timeout.Location = new System.Drawing.Point(322, 6);
             this.lbl_timeout.Name = "lbl_timeout";
-            this.lbl_timeout.Size = new System.Drawing.Size(196, 13);
+            this.lbl_timeout.Size = new System.Drawing.Size(67, 13);
             this.lbl_timeout.TabIndex = 4;
-            this.lbl_timeout.Text = "Timeout (in milliseconds, 2500 is default)";
+            this.lbl_timeout.Text = "Timeout (ms)";
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
-            this.toolStripSeparator1});
+            this.TsRestartbutton,
+            this.TsLog,
+            this.tSOptions,
+            this.TsExitButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.toolStrip1.Size = new System.Drawing.Size(492, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip";
             // 
-            // toolStripDropDownButton1
+            // TsRestartbutton
             // 
-            this.toolStripDropDownButton1.AutoToolTip = false;
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.DropDown = this.contextMenuStrip;
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(94, 22);
-            this.toolStripDropDownButton1.Text = "Quick options";
+            this.TsRestartbutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TsRestartbutton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msTimeoutToolStripMenuItem,
+            this.msTimeoutToolStripMenuItem1,
+            this.msTimeoutToolStripMenuItem2});
+            this.TsRestartbutton.Image = ((System.Drawing.Image)(resources.GetObject("TsRestartbutton.Image")));
+            this.TsRestartbutton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsRestartbutton.Name = "TsRestartbutton";
+            this.TsRestartbutton.Size = new System.Drawing.Size(59, 22);
+            this.TsRestartbutton.Text = "Restart";
+            this.TsRestartbutton.ToolTipText = "Restart with the timeout defined";
+            this.TsRestartbutton.ButtonClick += new System.EventHandler(this.btn_restart_service_Click);
             // 
-            // toolStripSeparator1
+            // msTimeoutToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.msTimeoutToolStripMenuItem.Name = "msTimeoutToolStripMenuItem";
+            this.msTimeoutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.msTimeoutToolStripMenuItem.Text = "1500ms timeout";
+            this.msTimeoutToolStripMenuItem.Click += new System.EventHandler(this.RestartTray);
+            // 
+            // msTimeoutToolStripMenuItem1
+            // 
+            this.msTimeoutToolStripMenuItem1.Name = "msTimeoutToolStripMenuItem1";
+            this.msTimeoutToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.msTimeoutToolStripMenuItem1.Text = "2500ms timeout";
+            this.msTimeoutToolStripMenuItem1.Click += new System.EventHandler(this.RestartTray);
+            // 
+            // msTimeoutToolStripMenuItem2
+            // 
+            this.msTimeoutToolStripMenuItem2.Name = "msTimeoutToolStripMenuItem2";
+            this.msTimeoutToolStripMenuItem2.Size = new System.Drawing.Size(159, 22);
+            this.msTimeoutToolStripMenuItem2.Text = "5000ms timeout";
+            this.msTimeoutToolStripMenuItem2.Click += new System.EventHandler(this.RestartTray);
+            // 
+            // tSOptions
+            // 
+            this.tSOptions.AutoToolTip = false;
+            this.tSOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tSOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsTCRoption,
+            this.TsUSBDrestartOption,
+            this.TsSMOption});
+            this.tSOptions.Image = ((System.Drawing.Image)(resources.GetObject("tSOptions.Image")));
+            this.tSOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSOptions.Name = "tSOptions";
+            this.tSOptions.Size = new System.Drawing.Size(62, 22);
+            this.tSOptions.Text = "Options";
+            // 
+            // TsTCRoption
+            // 
+            this.TsTCRoption.Name = "TsTCRoption";
+            this.TsTCRoption.Size = new System.Drawing.Size(184, 22);
+            this.TsTCRoption.Text = "Tray click restart";
+            // 
+            // TsUSBDrestartOption
+            // 
+            this.TsUSBDrestartOption.Name = "TsUSBDrestartOption";
+            this.TsUSBDrestartOption.Size = new System.Drawing.Size(184, 22);
+            this.TsUSBDrestartOption.Text = "USB detection restart";
+            // 
+            // TsSMOption
+            // 
+            this.TsSMOption.Name = "TsSMOption";
+            this.TsSMOption.Size = new System.Drawing.Size(184, 22);
+            this.TsSMOption.Text = "Start minimised";
+            // 
+            // TsExitButton
+            // 
+            this.TsExitButton.AutoToolTip = false;
+            this.TsExitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TsExitButton.Image = ((System.Drawing.Image)(resources.GetObject("TsExitButton.Image")));
+            this.TsExitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsExitButton.Name = "TsExitButton";
+            this.TsExitButton.Size = new System.Drawing.Size(29, 22);
+            this.TsExitButton.Text = "Exit";
+            this.TsExitButton.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // TsLog
+            // 
+            this.TsLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TsLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsClearLog,
+            this.TsSaveLog});
+            this.TsLog.Image = ((System.Drawing.Image)(resources.GetObject("TsLog.Image")));
+            this.TsLog.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsLog.Name = "TsLog";
+            this.TsLog.Size = new System.Drawing.Size(40, 22);
+            this.TsLog.Text = "Log";
+            // 
+            // TsClearLog
+            // 
+            this.TsClearLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsUndoLastLogClear,
+            this.TsConfirmClearLog});
+            this.TsClearLog.Name = "TsClearLog";
+            this.TsClearLog.Size = new System.Drawing.Size(152, 22);
+            this.TsClearLog.Text = "Clear log";
+            // 
+            // TsSaveLog
+            // 
+            this.TsSaveLog.Name = "TsSaveLog";
+            this.TsSaveLog.Size = new System.Drawing.Size(152, 22);
+            this.TsSaveLog.Text = "Save log to file";
+            this.TsSaveLog.Click += new System.EventHandler(this.TsSaveLog_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "txt";
+            this.saveFileDialog.Filter = "Text file |*.txt";
+            this.saveFileDialog.Title = "Save debug log";
+            // 
+            // TsUndoLastLogClear
+            // 
+            this.TsUndoLastLogClear.Name = "TsUndoLastLogClear";
+            this.TsUndoLastLogClear.Size = new System.Drawing.Size(152, 22);
+            this.TsUndoLastLogClear.Text = "Undo last clear";
+            this.TsUndoLastLogClear.Click += new System.EventHandler(this.TsUndoLastLogClear_Click);
+            // 
+            // TsConfirmClearLog
+            // 
+            this.TsConfirmClearLog.Name = "TsConfirmClearLog";
+            this.TsConfirmClearLog.Size = new System.Drawing.Size(152, 22);
+            this.TsConfirmClearLog.Text = "Confirm clear";
+            this.TsConfirmClearLog.Click += new System.EventHandler(this.TsClearLog_Click);
             // 
             // Debugger
             // 
@@ -255,7 +367,6 @@
             this.ClientSize = new System.Drawing.Size(492, 269);
             this.Controls.Add(this.lbl_timeout);
             this.Controls.Add(this.nUD_timeout);
-            this.Controls.Add(this.btn_restart_service);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.rTB_output);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -274,26 +385,38 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_restart_service;
         private System.Windows.Forms.RichTextBox rTB_output;
         private System.Windows.Forms.NumericUpDown nUD_timeout;
         private System.Windows.Forms.NotifyIcon NotifyIcon;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem restoreToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resetDriverToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem closeApplicationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CmRestoreScreen;
+        private System.Windows.Forms.ToolStripMenuItem CmReset;
+        private System.Windows.Forms.ToolStripMenuItem CmExit;
         private System.Windows.Forms.ToolStripMenuItem defaultTimeoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minimumTimeoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sTimeoutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem defaultRestartUponTrayClickToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startApplicationMinimisedToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem restartServiceUponUSBPlugInToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CmOptions;
+        private System.Windows.Forms.ToolStripMenuItem CmTCROption;
+        private System.Windows.Forms.ToolStripMenuItem CmSMOption;
+        private System.Windows.Forms.ToolStripMenuItem CmUSBROption;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Label lbl_timeout;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripDropDownButton tSOptions;
+        private System.Windows.Forms.ToolStripMenuItem TsTCRoption;
+        private System.Windows.Forms.ToolStripMenuItem TsUSBDrestartOption;
+        private System.Windows.Forms.ToolStripMenuItem TsSMOption;
+        private System.Windows.Forms.ToolStripSplitButton TsRestartbutton;
+        private System.Windows.Forms.ToolStripMenuItem msTimeoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem msTimeoutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem msTimeoutToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripButton TsExitButton;
+        private System.Windows.Forms.ToolStripDropDownButton TsLog;
+        private System.Windows.Forms.ToolStripMenuItem TsClearLog;
+        private System.Windows.Forms.ToolStripMenuItem TsSaveLog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem TsUndoLastLogClear;
+        private System.Windows.Forms.ToolStripMenuItem TsConfirmClearLog;
 
     }
 }

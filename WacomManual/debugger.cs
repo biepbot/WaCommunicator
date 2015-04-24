@@ -22,6 +22,7 @@ namespace WaCommunicator
         private int timeoutMilliseconds;
         private int loops;
         private ServiceController service;
+        private string lastOutput;
 
         //Option fields and their temporaries / fixes
         private bool clickToRestart;
@@ -61,12 +62,13 @@ namespace WaCommunicator
             timeoutMilliseconds = Convert.ToInt32(nUD_timeout.Value);
             loops = 0;
             pluggedIn = IsUsbDeviceConnected("056A");
+            lastOutput = rTB_output.Text;
 
             //Set the option checks
             backgroundWorker.RunWorkerAsync();
-            defaultRestartUponTrayClickToolStripMenuItem.Checked = clickToRestart;
-            restartServiceUponUSBPlugInToolStripMenuItem.Checked = restartOnPlugIn;
-            startApplicationMinimisedToolStripMenuItem.Checked = TEMPstartMinimised = startMinimised;
+            CmTCROption.Checked = TsTCRoption.Checked = clickToRestart;
+            CmUSBROption.Checked = TsUSBDrestartOption.Checked = restartOnPlugIn;
+            CmSMOption.Checked = TsSMOption.Checked = TEMPstartMinimised = startMinimised;
         }
         #endregion
 
@@ -99,6 +101,46 @@ namespace WaCommunicator
             loops = 0;
             Restart(Convert.ToInt32(nUD_timeout.Value));
         }
+
+        #region Special Toolstrip configuration
+        private void TsClearLog_Click(object sender, EventArgs e)
+        {
+            lastOutput = rTB_output.Text;
+            rTB_output.Clear();
+            Newline("Log cleared");
+        }
+
+        private void TsUndoLastLogClear_Click(object sender, EventArgs e)
+        {
+            rTB_output.Text = lastOutput;
+        }
+
+        private void TsSaveLog_Click(object sender, EventArgs e)
+        {
+            //Set 'dynamic' filename
+            saveFileDialog.FileName = DateTime.Now.ToString("yyyy.MM.dd hh mm") + " - " + "WaCommunicator debug log";
+            //In case the user saves
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //Try writing to file
+                    using (FileStream f = new FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write))
+                    {
+                        StreamWriter strWr = new StreamWriter(f);
+                        strWr.Write(rTB_output.Text);
+                        strWr.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error has occurred saving your file, check the debug log for more information");
+                    Newline("The following error has occurred '" + ex.Message + "'");
+                }
+            }
+        }
+        #endregion
+
         #endregion
 
         #region Inner functional methods; restarting and debugging
@@ -233,14 +275,14 @@ namespace WaCommunicator
 
         #region Context Strip Menu options
 
-        private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RestoreScreen_Click(object sender, EventArgs e)
         {
             //Show form
             Show();
             WindowState = FormWindowState.Normal;
         }
 
-        private void closeApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             //Close form
             this.Close();
@@ -250,8 +292,8 @@ namespace WaCommunicator
         {
             //Identify the sender, set the timeout settings
             int ms = 2500;
-            if (sender.ToString() == "Minimum timeout") { ms = 5000; }
-            if (sender.ToString() == "5s timeout") { ms = 1500; }
+            if (sender.ToString().StartsWith("5000") ) { ms = 5000; }
+            if (sender.ToString().StartsWith("1500") ) { ms = 1500; }
             string a = sender.ToString();
 
             //Notify the user
@@ -266,47 +308,49 @@ namespace WaCommunicator
         #region Saving and changing options
         private void IdentifySaver(object sender, EventArgs e)
         {
-            if (sender.ToString() == defaultRestartUponTrayClickToolStripMenuItem.Text)
+            if (sender.ToString() == CmTCROption.Text)
             {
-                EditAndSaveOptions(clickToRestart, defaultRestartUponTrayClickToolStripMenuItem);
+                EditAndSaveOptions(clickToRestart, CmTCROption, TsTCRoption);
                 return;
             }
-            if (sender.ToString() == startApplicationMinimisedToolStripMenuItem.Text)
+            if (sender.ToString() == CmSMOption.Text)
             {
-                EditAndSaveOptions(startMinimised, startApplicationMinimisedToolStripMenuItem);
+                EditAndSaveOptions(startMinimised, CmSMOption, TsSMOption);
                 return;
             }
-            if (sender.ToString() == restartServiceUponUSBPlugInToolStripMenuItem.Text)
+            if (sender.ToString() == CmUSBROption.Text)
             {
-                EditAndSaveOptions(restartOnPlugIn, restartServiceUponUSBPlugInToolStripMenuItem);
+                EditAndSaveOptions(restartOnPlugIn, CmUSBROption, TsUSBDrestartOption);
                 pluggedIn = IsUsbDeviceConnected("056A");
                 return;
             }
         }
 
-        private void EditAndSaveOptions(bool option, ToolStripMenuItem tSMI)
+        private void EditAndSaveOptions(bool option, ToolStripMenuItem tSMI, ToolStripMenuItem tSMIform)
         {
             //check current status, fix gui status
             if (option)
             {
                 tSMI.Checked = false;
+                tSMIform.Checked = false;
             }
             else
             {
                 tSMI.Checked = true;
+                tSMIform.Checked = true;
             }
             //Update inner status
-            restartOnPlugIn = restartServiceUponUSBPlugInToolStripMenuItem.Checked;
-            startMinimised = startApplicationMinimisedToolStripMenuItem.Checked;
-            clickToRestart = defaultRestartUponTrayClickToolStripMenuItem.Checked;
+            restartOnPlugIn = CmUSBROption.Checked;
+            startMinimised = CmSMOption.Checked;
+            clickToRestart = CmTCROption.Checked;
             //write to file
             using (FileStream stream = new FileStream("WaCommunicatorOptions", FileMode.Create))
             {
                 using (BinaryWriter writer = new BinaryWriter(stream))
                 {
-                    writer.Write(defaultRestartUponTrayClickToolStripMenuItem.Checked);
-                    writer.Write(startApplicationMinimisedToolStripMenuItem.Checked);
-                    writer.Write(restartServiceUponUSBPlugInToolStripMenuItem.Checked);
+                    writer.Write(CmTCROption.Checked);
+                    writer.Write(CmSMOption.Checked);
+                    writer.Write(CmUSBROption.Checked);
                     writer.Close();
                 }
             }
