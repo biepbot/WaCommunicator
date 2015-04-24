@@ -16,7 +16,7 @@ namespace WaCommunicator
 {
     public partial class Debugger : Form
     {
-        #region Initialising of fields, a few for options, others for quick use
+        #region Initialising of fields, options and temporaries
         //Fields
         private string serviceName = "Wacom Professional Service";
         private int timeoutMilliseconds;
@@ -58,13 +58,13 @@ namespace WaCommunicator
             }
 
             //Init
-            rTB_output.Text = DateTime.Now.TimeOfDay.ToString("hh\\:mm\\:ss") + " - User detected, settings loaded";
+            Newline(DateTime.Now.TimeOfDay.ToString("hh\\:mm\\:ss") + " - User detected, settings loaded");
             timeoutMilliseconds = Convert.ToInt32(nUD_timeout.Value);
             loops = 0;
             pluggedIn = IsUsbDeviceConnected("056A");
             lastOutput = rTB_output.Text;
 
-            //Set the option checks
+            //Check the active options
             backgroundWorker.RunWorkerAsync();
             CmTCROption.Checked = TsTCRoption.Checked = clickToRestart;
             CmUSBROption.Checked = TsUSBDrestartOption.Checked = restartOnPlugIn;
@@ -140,6 +140,72 @@ namespace WaCommunicator
                 {
                     MessageBox.Show("An error has occurred saving your file, check the debug log for more information");
                     Newline("The following error has occurred '" + ex.Message + "'");
+                }
+            }
+        }
+        #endregion
+
+        #region Context Strip Menu (button) configuration
+
+        private void RestoreScreen_Click(object sender, EventArgs e)
+        {
+            //Show form
+            Show();
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            //Close form
+            this.Close();
+        }
+
+        private void RestartTray(object sender, EventArgs e)
+        {
+            //Identify the sender, set the timeout settings
+            int ms = 2500;
+            if (sender.ToString().StartsWith("5000")) { ms = 5000; }
+            if (sender.ToString().StartsWith("1500")) { ms = 1500; }
+            string a = sender.ToString();
+
+            //Notify the user
+            NotifyIcon.ShowBalloonTip(3000, "Restarting the driver", "Please wait!", ToolTipIcon.Info);
+
+            //Initialise restart
+            loops = 0;
+            Restart(ms);
+        }
+        #endregion
+
+        #region Tray icon (responsive) configuration
+
+        private void NotifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            //Open form upon doubleclick (unless restart on click is enabled, due to conflicts)
+            if (!clickToRestart)
+            {
+                Show();
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void NotifyIcon_Click(object sender, EventArgs e)
+        {
+            //Create a mousebutton identifier
+            MouseEventArgs me = (MouseEventArgs)e;
+
+            //If right mouse button is pressed, open up the options
+            if (me.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                contextMenuStrip.Show();
+            }
+
+            //If the left mouse button is pressed, and the option is enabled; restart
+            if (me.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                if (clickToRestart)
+                {
+                    RestartTray(sender, e);
                 }
             }
         }
@@ -238,72 +304,6 @@ namespace WaCommunicator
             //Write information lines with time
             text = DateTime.Now.TimeOfDay.ToString("hh\\:mm\\:ss") + " - " + text;
             rTB_output.Text = rTB_output.Text.Insert(0, text + Environment.NewLine);
-        }
-        #endregion
-
-        #region Tray icon configuration
-
-        private void NotifyIcon_DoubleClick(object sender, EventArgs e)
-        {
-            //Open form upon doubleclick (unless restart on click is enabled, due to conflicts)
-            if (!clickToRestart)
-            {
-                Show();
-                WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void NotifyIcon_Click(object sender, EventArgs e)
-        {
-            //Create a mousebutton identifier
-            MouseEventArgs me = (MouseEventArgs)e;
-
-            //If right mouse button is pressed, open up the options
-            if (me.Button == System.Windows.Forms.MouseButtons.Right)
-            {
-                contextMenuStrip.Show();
-            }
-
-            //If the left mouse button is pressed, and the option is enabled; restart
-            if (me.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                if (clickToRestart)
-                {
-                    RestartTray(sender, e);
-                }
-            }
-        }
-        #endregion
-
-        #region Context Strip Menu options
-
-        private void RestoreScreen_Click(object sender, EventArgs e)
-        {
-            //Show form
-            Show();
-            WindowState = FormWindowState.Normal;
-        }
-
-        private void Exit_Click(object sender, EventArgs e)
-        {
-            //Close form
-            this.Close();
-        }
-
-        private void RestartTray(object sender, EventArgs e)
-        {
-            //Identify the sender, set the timeout settings
-            int ms = 2500;
-            if (sender.ToString().StartsWith("5000") ) { ms = 5000; }
-            if (sender.ToString().StartsWith("1500") ) { ms = 1500; }
-            string a = sender.ToString();
-
-            //Notify the user
-            NotifyIcon.ShowBalloonTip(3000, "Restarting the driver", "Please wait!", ToolTipIcon.Info);
-
-            //Initialise restart
-            loops = 0;
-            Restart(ms);
         }
         #endregion
 

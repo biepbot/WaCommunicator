@@ -65,6 +65,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.labelCredit = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_timeout)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.tSMain.SuspendLayout();
@@ -296,7 +297,7 @@
             this.TsClearLog,
             this.TsUndoLogClear});
             this.TsSubLog.Name = "TsSubLog";
-            this.TsSubLog.Size = new System.Drawing.Size(131, 22);
+            this.TsSubLog.Size = new System.Drawing.Size(152, 22);
             this.TsSubLog.Text = "Manage";
             // 
             // TsClearLog
@@ -316,7 +317,7 @@
             // TsSaveLog
             // 
             this.TsSaveLog.Name = "TsSaveLog";
-            this.TsSaveLog.Size = new System.Drawing.Size(131, 22);
+            this.TsSaveLog.Size = new System.Drawing.Size(152, 22);
             this.TsSaveLog.Text = "Save to file";
             this.TsSaveLog.Click += new System.EventHandler(this.TsSaveLog_Click);
             // 
@@ -389,11 +390,22 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
+            // labelCredit
+            // 
+            this.labelCredit.AutoSize = true;
+            this.labelCredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCredit.Location = new System.Drawing.Point(361, 256);
+            this.labelCredit.Name = "labelCredit";
+            this.labelCredit.Size = new System.Drawing.Size(131, 12);
+            this.labelCredit.TabIndex = 6;
+            this.labelCredit.Text = "Created by Biepbot von Stirling";
+            // 
             // Debugger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 269);
+            this.Controls.Add(this.labelCredit);
             this.Controls.Add(this.lbl_timeout);
             this.Controls.Add(this.nUD_timeout);
             this.Controls.Add(this.tSMain);
@@ -449,6 +461,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.Label labelCredit;
 
     }
 }
