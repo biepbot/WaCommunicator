@@ -15,3 +15,4 @@ C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\bin\Debug\WaCommunicato
 C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.Properties.Resources.resources
 C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WacomManual.csproj.GenerateResource.Cache
 C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.debugger.resources
+C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WacomManual.csprojResolveAssemblyReference.cache
