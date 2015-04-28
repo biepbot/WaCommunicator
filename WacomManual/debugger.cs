@@ -233,27 +233,55 @@ namespace WaCommunicator
                     //If the USB is plugged in; give it some time to 'load'
                     System.Threading.Thread.Sleep(wait);
 
-                    //Start by stopping the service and both set and count timeouts
+                    //Ready the variables
                     Newline("Initialisement successful");
-                    Newline("Processing kill stage");
-                    int millisec1 = Environment.TickCount;
+                    int millisec1 = 0;
                     TimeSpan timeout = TimeSpan.FromMilliseconds(timeoutms);
 
-                    service.Stop();
-                    service.WaitForStatus(ServiceControllerStatus.Stopped, timeout);
-                    Newline("Service: " + serviceName + " successfully stopped");
+                    //Check if the serivce can be stopped
+                    if (service.Status != ServiceControllerStatus.Stopped || service.Status != ServiceControllerStatus.StopPending)
+                    {
+                        //Inform the user and set ticks
+                        Newline("Processing kill stage");
+                        millisec1 = Environment.TickCount;
+
+                        //Stop the service
+                        service.Stop();
+                        service.WaitForStatus(ServiceControllerStatus.Stopped, timeout);
+                        //Check for success
+                        if (service.Status == ServiceControllerStatus.Stopped || service.Status == ServiceControllerStatus.StopPending)
+                        {
+                            Newline("Service: " + serviceName + " successfully stopped");
+                        }
+                        else
+                        {
+                            throw new Exception("Unable to stop service " + serviceName + "! Retrying...");
+                        }
+                    }
+                    else
+                    {
+                        Newline("Service: " + serviceName + " was already stopped, starting it instead");
+                    }
 
                     System.Threading.Thread.Sleep(500);
 
                     //count the rest of the timeout
                     int millisec2 = Environment.TickCount;
                     timeout = TimeSpan.FromMilliseconds(timeoutms - (millisec2 - millisec1));
-                    Newline("Processing reboot stage...");
+                    Newline("Processing start stage...");
 
                     //start the service again
                     service.Start();
-                    service.WaitForStatus(ServiceControllerStatus.Running, timeout);
-                    Newline("Service: " + serviceName + " successfully launched");
+                    service.WaitForStatus(ServiceControllerStatus.Running, timeout); 
+                    //Check for success
+                    if (service.Status != ServiceControllerStatus.Running || service.Status != ServiceControllerStatus.StartPending)
+                    {
+                        Newline("Service: " + serviceName + " successfully launched");
+                    }
+                    else
+                    {
+                        throw new Exception("Unable to start service " + serviceName + "! Retrying...");
+                    }
                     Newline("Done and ready to go!");
 
                     NotifyIcon.ShowBalloonTip(2000, "Wacom driver restarted!", "Give it time to load resources fully...", ToolTipIcon.Info);
