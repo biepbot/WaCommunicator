@@ -18,7 +18,7 @@ namespace WaCommunicator
     {
         #region Initialising of fields, options and temporaries
         //Fields
-        private string serviceName = "Wacom Professional Service";
+        private string[] serviceNames = { "Wacom Professional Service", "TabletServicePen", "Wacom Consumer Touch Service" };
         private int timeoutMilliseconds;
         private int loops;
         private ServiceController service;
@@ -35,7 +35,7 @@ namespace WaCommunicator
         #region Constructor and loading of options
         //Constructor (empty)
         public Debugger()
-        { 
+        {
             InitializeComponent();
 
             //Open option file and read it; load the options
@@ -217,116 +217,137 @@ namespace WaCommunicator
         #region Inner functional methods; restarting and debugging
         public void Restart(int timeoutms, int wait = 0)
         {
-            //Create new servicecontroller
-            if (loops == 0) { service = new ServiceController(serviceName); }
-
-            //Check the amount of loops of the catch
-            if (loops <= 4)
+            //Get all services
+            ServiceController[] services = ServiceController.GetServices();
+            List<string> servicesToRestart = new List<string>();
+            //Loop through services
+            foreach (ServiceController service in services)
             {
-                loops++;
-                if (loops == 1) { Newline("Initialising service '" + serviceName + "' restart with timeout set " + Convert.ToString(timeoutms) + "..."); }
-                else { Newline("An error has occurred, retrying! Retry number: " + loops + " out of 5"); }
-
-                //Try restarting
-                try
+                foreach (string wacomService in serviceNames)
                 {
-                    //If the USB is plugged in; give it some time to 'load'
-                    System.Threading.Thread.Sleep(wait);
-
-                    //Ready the variables
-                    Newline("Initialisement successful");
-                    int millisec1 = 0;
-                    TimeSpan timeout = TimeSpan.FromMilliseconds(timeoutms);
-
-                    //Check if the serivce can be stopped
-                    if (service.Status != ServiceControllerStatus.Stopped || service.Status != ServiceControllerStatus.StopPending)
+                    if (service.DisplayName == wacomService)
                     {
-                        //Inform the user and set ticks
-                        Newline("Processing kill stage");
-                        millisec1 = Environment.TickCount;
-
-                        //Stop the service
-                        service.Stop();
-                        service.WaitForStatus(ServiceControllerStatus.Stopped, timeout);
-                        //Check for success
-                        if (service.Status == ServiceControllerStatus.Stopped || service.Status == ServiceControllerStatus.StopPending)
-                        {
-                            Newline("Service: " + serviceName + " successfully stopped");
-                        }
-                        else
-                        {
-                            throw new Exception("Unable to stop service " + serviceName + "! Retrying...");
-                        }
-                    }
-                    else
-                    {
-                        Newline("Service: " + serviceName + " was already stopped, starting it instead");
-                    }
-
-                    System.Threading.Thread.Sleep(500);
-
-                    //count the rest of the timeout
-                    int millisec2 = Environment.TickCount;
-                    timeout = TimeSpan.FromMilliseconds(timeoutms - (millisec2 - millisec1));
-                    Newline("Processing start stage...");
-
-                    //start the service again
-                    service.Start();
-                    service.WaitForStatus(ServiceControllerStatus.Running, timeout); 
-                    //Check for success
-                    if (service.Status != ServiceControllerStatus.Running || service.Status != ServiceControllerStatus.StartPending)
-                    {
-                        Newline("Service: " + serviceName + " successfully launched");
-                    }
-                    else
-                    {
-                        throw new Exception("Unable to start service " + serviceName + "! Retrying...");
-                    }
-                    Newline("Done and ready to go!");
-
-                    NotifyIcon.ShowBalloonTip(2000, "Wacom driver restarted!", "Give it time to load resources fully...", ToolTipIcon.Info);
-                }
-                catch (Exception ex)
-                {
-                    //If an exception occurred, show which exception in the console
-                    Newline("Something went wrong:");
-                    Newline("\"" + ex.Message + "\"");
-                    //If it is due to a lack of rights, then don't loop
-                    if (ex.Message.Contains("Cannot open") && ex.Message.Contains("service on computer '.'."))
-                    { 
-                        Newline("Are you running the application with administrator rights?");
-                        loops = 0;
-
-                        NotifyIcon.ShowBalloonTip(2000, "Not enough rights!", "Run the application with admin rights", ToolTipIcon.Warning);
-                    }
-                    else
-                    {
-                        //If the service does not exist
-                        if (ex.Message.Contains("was not found on computer"))
-                        {
-                            //Show said service, and ask for validation
-                            Newline("Is the '" + serviceName + "' service installed (correctly)?");
-                            loops = 0;
-
-                            NotifyIcon.ShowBalloonTip(2000, "Service not found!", "Is the service present?", ToolTipIcon.Error);
-                        }
-                        else
-                        {
-                            //Else try again
-                            Restart(Convert.ToInt32(nUD_timeout.Value));
-
-                            NotifyIcon.ShowBalloonTip(2000, "Failed to restart", "Trying again...", ToolTipIcon.Warning);
-                        }
+                        servicesToRestart.Add(wacomService);
                     }
                 }
             }
-            else
-            {
-                //After 5 fails, stop retrying
-                Newline("Failed to restart after 5 tries");
-                loops = 0;
 
-                NotifyIcon.ShowBalloonTip(3000, "Failed to restart!", "Check log for errors", ToolTipIcon.Error);
+            //Show amount of services found
+            Newline("The following amount of services will be restarted, please wait: " + servicesToRestart.Count);
+
+            foreach (string serviceName in servicesToRestart)
+            {
+                //Create new servicecontroller
+                if (loops == 0) { service = new ServiceController(serviceName); }
+
+                //Check the amount of loops of the catch
+                if (loops <= 4)
+                {
+                    loops++;
+                    if (loops == 1) { Newline("Initialising service '" + serviceName + "' restart with timeout set " + Convert.ToString(timeoutms) + "..."); }
+                    else { Newline("An error has occurred, retrying! Retry number: " + loops + " out of 5"); }
+
+                    //Try restarting
+                    try
+                    {
+                        //If the USB is plugged in; give it some time to 'load'
+                        System.Threading.Thread.Sleep(wait);
+
+                        //Ready the variables
+                        Newline("Initialisement successful");
+                        int millisec1 = 0;
+                        TimeSpan timeout = TimeSpan.FromMilliseconds(timeoutms);
+
+                        //Check if the serivce can be stopped
+                        if (service.Status != ServiceControllerStatus.Stopped || service.Status != ServiceControllerStatus.StopPending)
+                        {
+                            //Inform the user and set ticks
+                            Newline("Processing kill stage");
+                            millisec1 = Environment.TickCount;
+
+                            //Stop the service
+                            service.Stop();
+                            service.WaitForStatus(ServiceControllerStatus.Stopped, timeout);
+                            //Check for success
+                            if (service.Status == ServiceControllerStatus.Stopped || service.Status == ServiceControllerStatus.StopPending)
+                            {
+                                Newline("Service: " + serviceName + " successfully stopped");
+                            }
+                            else
+                            {
+                                throw new Exception("Unable to stop service " + serviceName + "! Retrying...");
+                            }
+                        }
+                        else
+                        {
+                            Newline("Service: " + serviceName + " was already stopped, starting it instead");
+                        }
+
+                        System.Threading.Thread.Sleep(500);
+
+                        //count the rest of the timeout
+                        int millisec2 = Environment.TickCount;
+                        timeout = TimeSpan.FromMilliseconds(timeoutms - (millisec2 - millisec1));
+                        Newline("Processing start stage...");
+
+                        //start the service again
+                        service.Start();
+                        service.WaitForStatus(ServiceControllerStatus.Running, timeout);
+                        //Check for success
+                        if (service.Status != ServiceControllerStatus.Running || service.Status != ServiceControllerStatus.StartPending)
+                        {
+                            Newline("Service: " + serviceName + " successfully launched");
+                        }
+                        else
+                        {
+                            throw new Exception("Unable to start service " + serviceName + "! Retrying...");
+                        }
+                        Newline("Done and ready to go!");
+
+                        NotifyIcon.ShowBalloonTip(2000, "Wacom driver restarted!", "Give it time to load resources fully...", ToolTipIcon.Info);
+                    }
+                    catch (Exception ex)
+                    {
+                        //If an exception occurred, show which exception in the console
+                        Newline("Something went wrong:");
+                        Newline("\"" + ex.Message + "\"");
+                        //If it is due to a lack of rights, then don't loop
+                        if (ex.Message.Contains("Cannot open") && ex.Message.Contains("service on computer '.'."))
+                        {
+                            Newline("Are you running the application with administrator rights?");
+                            loops = 0;
+
+                            NotifyIcon.ShowBalloonTip(2000, "Not enough rights!", "Run the application with admin rights", ToolTipIcon.Warning);
+                        }
+                        else
+                        {
+                            //If the service does not exist
+                            if (ex.Message.Contains("was not found on computer"))
+                            {
+                                //Show said service, and ask for validation
+                                Newline("Is the '" + serviceName + "' service installed (correctly)?");
+                                loops = 0;
+
+                                NotifyIcon.ShowBalloonTip(2000, "Service not found!", "Is the service present?", ToolTipIcon.Error);
+                            }
+                            else
+                            {
+                                //Else try again
+                                Restart(Convert.ToInt32(nUD_timeout.Value));
+
+                                NotifyIcon.ShowBalloonTip(2000, "Failed to restart", "Trying again...", ToolTipIcon.Warning);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //After 5 fails, stop retrying
+                    Newline("Failed to restart after 5 tries");
+                    loops = 0;
+
+                    NotifyIcon.ShowBalloonTip(3000, "Failed to restart!", "Check log for errors", ToolTipIcon.Error);
+                }
             }
         }
 
@@ -415,7 +436,18 @@ namespace WaCommunicator
             //If a device is removed, check whether the Wacom USB is still plugged in
             if (restartOnPlugIn)
             {
-                pluggedIn = IsUsbDeviceConnected("056A");
+                bool find = false;
+                find = IsUsbDeviceConnected("056A");
+                /*
+                if (find)
+                {
+                    pluggedIn = find;
+                }
+                else
+                {
+                    find = IsUsbDeviceConnected("056A");
+                }*/
+                pluggedIn = find;
             }
         }
         #endregion

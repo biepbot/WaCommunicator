@@ -19,3 +19,12 @@ C:\Users\Biepbot\Source\Repos\WaCommunicator\WacomManual\obj\Debug\WacomManual.c
 D:\School\WaCommunicator\WacomManual\bin\Debug\WaCommunicator.exe.config
 D:\School\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.exe
 D:\School\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.pdb
+E:\School\WaCommunicator\WacomManual\bin\Debug\WaCommunicator.exe.config
+E:\School\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.exe
+E:\School\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.pdb
+E:\School\WaCommunicator\WacomManual\bin\Debug\WaCommunicator.exe
+E:\School\WaCommunicator\WacomManual\bin\Debug\WaCommunicator.pdb
+E:\School\WaCommunicator\WacomManual\obj\Debug\WacomManual.csprojResolveAssemblyReference.cache
+E:\School\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.Debugger.resources
+E:\School\WaCommunicator\WacomManual\obj\Debug\WaCommunicator.Properties.Resources.resources
+E:\School\WaCommunicator\WacomManual\obj\Debug\WacomManual.csproj.GenerateResource.Cache
